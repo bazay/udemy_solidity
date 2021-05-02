@@ -51,6 +51,12 @@ describe('Lottery', () => {
     assert.ok(lottery.options.address);
   });
 
+  it('sets an owner', async () => {
+    const owner = await lottery.methods.owner().call();
+
+    assert.equal(owner, accounts[0]);
+  });
+
   describe('#addPlayer', () => {
     it('allows a new participant', async () => {
       await lottery.methods.addPlayer().send({

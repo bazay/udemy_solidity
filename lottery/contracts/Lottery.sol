@@ -4,7 +4,6 @@ pragma solidity ^0.8.0;
 // Make sure maths is safe and avoid integer overflow attacks
 contract Lottery {
   address payable private _owner;
-  string public message;
   address payable[] public players;
 
   event addedPlayer(address payable player);

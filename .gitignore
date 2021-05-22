@@ -1,3 +1,4 @@
 */build
 */node_modules
-*/deployed_address.txt
+*/deployed_address.yml
+*/.next

@@ -31,11 +31,20 @@ var input = {
   }
 };
 
-const output = JSON.parse(solc.compile(JSON.stringify(input))).contracts
+const output = JSON.parse(solc.compile(JSON.stringify(input)))
 
-for (let contract in output) {
+if (output.errors) {
+  console.log('COMPILE FAILED:');
+  console.log(output.errors);
+  return
+}
+
+for (let contract in output.contracts) {
   fs.outputJsonSync(
     path.resolve(buildPath, contract.replace('.sol', '') + '.json'),
-    output[contract][contract.replace('.sol', '')]
+    output.contracts[contract][contract.replace('.sol', '')]
   );
 }
+
+console.log('COMPILE SUCCESSFUL');
+console.log('Files added to: ' + buildPath);

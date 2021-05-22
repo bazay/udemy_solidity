@@ -66,6 +66,20 @@ contract Campaign {
         request.complete = true;
     }
 
+    function getSummary() public view returns(uint, uint, uint, uint, address) {
+      return(
+        minimumContribution,
+        address(this).balance,
+        requests.length,
+        contributorsCount,
+        owner
+      );
+    }
+
+    function getRequestsCount() public view returns(uint) {
+      return requests.length;
+    }
+
     // private
 
     function _isContributor(address _contributor) private view returns(bool) {
